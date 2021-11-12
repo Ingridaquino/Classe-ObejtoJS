@@ -1,5 +1,5 @@
 // Exercício
-class contaBancaria{
+class ContaBancaria{
     constructor(nome, idade, salário, sexo, agência, conta, tipoConta){
         this.nome = nome;
         this.idade = idade;
