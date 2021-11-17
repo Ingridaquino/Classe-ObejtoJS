@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box ;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+ul{
+    list-style: none;
+}
+
+ul li{
+    margin: 1rem;
+    padding: .4rem .4rem;
+    color: white;
+    background: #292424;
+    line-height: 40px;
+    cursor: pointer;
+    box-shadow: -3px 6px 4px #222;
+}
+
+
+.conteudo{
+    margin: auto;
+    width: 600px;
+    overflow: auto;
+    padding: 3rem 3rem;
+}
+
+#my-form{
+    padding: 2rem;
+    background: #130505;
+    color: white;
+    margin: 2rem;
+}
+
+#my-form input[type='text']{
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#my-form select{
+    width: 20%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.aniv > input{
+    padding: 8px;
+    width: 80%;
+}
+
+
+.botao{
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    border: 0;
+    background: rgba(12, 65, 180, 0.781);
+    color: #fff;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.botao:hover{
+    background: #444;
+}
+
+.bg-dark{
+    background: #333;
+    color: #fff;
+}
+
+
+.error{
+    font-size: 0.8rem;
+    background: #fff;
+    color: red;
+}
