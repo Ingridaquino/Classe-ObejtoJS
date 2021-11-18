@@ -9,11 +9,12 @@ btn.style.background = 'red';
 // Busca pelos elementos do Formulário
 const myForm = document.querySelector('#my-form');
 const nameInput = document.querySelector('#name');
-const emailInput = document.querySelector('#email');
+
 const date = document.querySelector('#date');
 const msg = document.querySelector('.msg');
-const msg_email = document.querySelector('.msg_email');
+
 const userList = document.querySelector('#users');
+const dateMsg = document.querySelector('.msg_data');
 
 
 // Método addEventListener
@@ -27,45 +28,63 @@ function onSubmit(e) {
     const temp = new Date(date.value).getFullYear()
 
     // let anoInput = parseInt(date.value.split('-')[0], 10) //Transformando string em decimal 
-
-    if (nameInput.value === '' || emailInput.value === '' || (ano - temp) < 18 ) {
+    if (nameInput.value === '' || date.value === '' ) {
         // alert('Por favor, preencha os dados.');
         msg.classList.add('error'); 
         msg.innerHTML = 'Por favor, preencha os dados.';
         setTimeout(() => msg.remove(), 3000);
-    } else {
+  
+
+    }else if((ano - temp) < 18){
+            dateMsg.classList.add('error'); 
+            dateMsg.innerHTML = 'Menor de idade';
+            setTimeout(() => dateMsg.remove(), 3000);
+    
+    }else {
         // console.log('sucess');
         const li = document.createElement('li');
         li.appendChild(
-            document.createTextNode(
-                `${nameInput.value} : ${emailInput.value} : ${date.value}`
-            )
-        );
-        userList.appendChild(li);
-        // Limpa o formulário
-        nameInput.value = '';
-        emailInput.value = '';
-        date.getElementsByTagName('item2')[0].selected = 'selected';
-        nameInput.focus(); //Coloca o foco no elmento
+        document.createTextNode(
+        `${nameInput.value} : ${date.value}`)
+        );
+         userList.appendChild(li);
         
+        //create span
+        const mySpan = document.createElement('span');
+        mySpan.innerHTML = 'x'
+        li.appendChild(mySpan); 
+ 
+        // Botão delete
+        const close = document.querySelectorAll('span');
+            for(let i=0; i < close.length; i++){
+                close[i].addEventListener('click', () =>{
+                    close[i].parentElement.style.opacity = 0;
+                    
+                    setTimeout(() =>{
+                        close[i].parentElement.style.display = 'none';
+                        close[i].parentElement.remove();
+        
+                    }, 500);
+                });
+            }
+             // Limpa o formulário
+                nameInput.value = '';
+                date.value = '';
+                date.getElementsByTagName('li')[0].selected = 'selected';
+                nameInput.focus(); //Coloca o foco no elmento
+            
     }
-}
+
+    }
 
 
-//Excluir o elemento
-function deleteButton(){
-    const deleteBu = document.getElementsByTagName('li')
-    console.log(deleteBu)
-    deleteBu[0].remove()  
-}
 
-// Validando e-mail
-emailInput.addEventListener('change', (e) => {
-    let padrao = new RegExp(/.*@.*\..*/i);
-    if (!padrao.test(emailInput.value)) {
-        // alert('Por favor, insira um e-mail válido.');
-        msg_email.classList.add('error');
-        msg_email.innerHTML = 'Por favor, insira um e-mail válido.';
-        setTimeout(() => msg.remove(), 3000);
-    }
-});
+
+
+// //Excluir o elemento
+// function deleteButton(){
+//     const deleteBu = document.getElementsByTagName('li')
+//     console.log(deleteBu)
+//     deleteBu[0].remove()  
+// }
+
